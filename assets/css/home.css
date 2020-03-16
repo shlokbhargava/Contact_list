@@ -1,0 +1,46 @@
+body{
+    text-align: center;
+    color: brown;
+    margin: 5px,0,0,0;
+}
+
+
+/* Contact list display */
+#list{
+    text-decoration: none;
+    background-color: rgb(10, 99, 155);
+    color: white;
+    font-size: 1.5rem;
+    height: 32px;
+    width: 400px;
+    margin-left: 33.6%;
+}
+
+#list:hover{
+    background-color: darkslategray;
+    cursor: pointer;
+}
+
+#left-align{
+    text-align: left;
+}
+
+#right-align{
+    text-align: right;
+}
+
+
+/* Submit Button */
+#submit-button{
+    background-color: darkslategrey;
+    color: white;
+    height: 24px;
+    width: 80px;
+}
+
+#submit-button:hover{
+    background-color: darkcyan;
+    cursor: pointer;
+}
+
+

@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>
+            <%= title %>
+        </title>
+        <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/font-awesome/css/solid.css">
+        <link rel="stylesheet" href="/font-awesome/css/brands.css">
+        <link rel="stylesheet" href="/font-awesome/css/regular.css">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="icon" type="image/icon" href="/images/favicon.png">
+    </head>
+    <body>
+        <h1><i class="far fa-address-book"></i>&nbsp;My Contact List</h1>
+        <div>
+            <ul>
+                <% for(let i of contact_list) { %> 
+                    <li id="list">
+                        <span id="left-align"><%= i.name %></span>
+                        <span id="right-align"><%= i.phone %></span>
+                    </li>
+                    <br>
+                <% } %>
+            </ul>
+        </div>
+
+        <form action="/create-contact" method="POST">
+            <input type="text" name="name" placeholder="Enter Name" required> &nbsp;
+            <input type="number" name="phone" placeholder="Enter Phone Number" required> &nbsp;
+
+            <button id="submit-button" type="submit">Add Contact</button>
+        </form>
+
+        <script type="text/javascript" src="/js/home.js"></script>
+    </body>
+</html>
