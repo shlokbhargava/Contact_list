@@ -21,12 +21,23 @@ body{
     cursor: pointer;
 }
 
-#left-align{
-    text-align: left;
+#list-item{
+    text-decoration: none;
+    color: white;
 }
 
-#right-align{
-    text-align: right;
+#display-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* Delete Button */
+#delete-button{
+    display: none;
+    color: white;
+    background-color:  rgb(10, 99, 155);
 }
 
 
