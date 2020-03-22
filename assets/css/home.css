@@ -21,11 +21,6 @@ body{
     cursor: pointer;
 }
 
-#list-item{
-    text-decoration: none;
-    color: white;
-}
-
 #display-list{
     display: flex;
     flex-direction: row;
@@ -35,7 +30,6 @@ body{
 
 /* Delete Button */
 #delete-button{
-    display: none;
     color: white;
     background-color:  rgb(10, 99, 155);
 }
@@ -53,5 +47,6 @@ body{
     background-color: darkcyan;
     cursor: pointer;
 }
+
 
 

@@ -23,14 +23,12 @@
             <ul>
                 <% for(let i of contact_list) { %> 
                     <li id="list">
-                        <a href="#delete-button" id="list-item" onclick="toggle()">
-                            <div id="display-list">
-                                <div><%= i.name %></></div>
-                                <div><%= i.phone %></></div>
-                            </div>
-                        </a>
+                        <div id="display-list">
+                            <div><%= i.name %></></div>
+                            <div><%= i.phone %></></div>
+                        </div>
                         <div id="delete-button">
-                            <a href="/delete-contact/?phone=<%= i.phone %>">
+                            <a href="/delete-contact/?id=<%= i._id %>">
                                 <i class="fas fa-times"></i>
                             </a>
                         </div>

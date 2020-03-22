@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const port = 8000;
 
+const db = require('./config/mongoose');
+const Contact = require('./models/contact');
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -26,9 +29,16 @@ var contactList = [
 
 app.get('/', function(request, response){
     
-    return response.render('home', {
-        title: "Contact List",
-        contact_list: contactList
+    Contact.find({}, function(err, contacts){
+        if(err){
+            console.log('Error in fetching the contacts from the database');
+            return;
+        }
+
+        return response.render('home', {
+            title: "Contact List",
+            contact_list: contacts
+        });
     });
 });
 
@@ -49,22 +59,48 @@ app.post('/create-contact', function(request, response){
 
     // return response.redirect('/');
 
-    contactList.push(request.body);
+    // contactList.push(request.body);
     
-    return response.redirect('back');
+    // return response.redirect('back');
+
+    Contact.create({
+        name: request.body.name,
+        phone: request.body.phone
+    }, function(err, newContact){
+        if(err){
+            console.log('there is an error in creating Contact');
+            return;
+        }
+
+        console.log('*********', newContact);
+        return response.redirect('back');
+    });
 });
 
 // For Deleting a Contact
 app.get('/delete-contact', function(request, response){
-    let phone = request.query.phone;
+    // let phone = request.query.phone;
 
-    let contactIndex = contactList.findIndex(contact => contact.phone == phone);
+    // let contactIndex = contactList.findIndex(contact => contact.phone == phone);
 
-    if(contactIndex != -1){
-        contactList.splice(contactIndex, 1);
-    }
+    // if(contactIndex != -1){
+    //     contactList.splice(contactIndex, 1);
+    // }
 
-    return response.redirect('back');
+    // DATABASE--
+
+    // get the id from query in the ul 
+    let id = request.query.id;
+
+    // find the contact in the database and delete it
+    Contact.findByIdAndDelete(id, function(err){
+        if(err){
+            console.log('error in deleting an object from the database');
+            return;
+        }
+        return response.redirect('back');
+    });
+    
 });
 
 
